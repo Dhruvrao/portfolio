@@ -110,7 +110,7 @@ h1{font-size:clamp(2.4rem,5.2vw,3.7rem);font-weight:400}
 .intro{max-width:46ch;color:var(--dim)}
 .acts{display:flex;flex-wrap:wrap;gap:9px;margin-top:1.5rem}
 .btn{display:inline-flex;align-items:center;gap:7px;text-decoration:none;cursor:pointer;
-  font:inherit;font-size:.92rem;padding:.5rem 1.05rem;border-radius:3px;
+  font:inherit;font-size:.92rem;padding:.5rem 1.05rem;border-radius:5px;
   border:1px solid var(--line2);background:var(--tint);color:var(--ink);
   transition:border-color .2s,background .2s,color .2s}
 .btn:hover{border-color:var(--acc);background:var(--tint2)}
@@ -206,18 +206,54 @@ h3.sub{font-size:1rem;font-weight:500;margin-bottom:.9rem}
 .creds li{color:var(--dim);font-size:.93rem;padding-left:1rem;position:relative}
 .creds li::before{content:"";position:absolute;left:0;top:.6em;width:4px;height:4px;border-radius:50%;background:var(--acc)}
 
+/* floating whatsapp — holds back until the hero is behind you */
+#wa{position:fixed;right:18px;bottom:18px;z-index:60;display:inline-flex;align-items:center;gap:.5rem;
+  text-decoration:none;font-size:.9rem;color:var(--ink);background:var(--bg2);
+  border:1px solid var(--line2);border-radius:999px;padding:.6rem .95rem;
+  box-shadow:0 8px 26px rgba(0,0,0,.45);
+  opacity:0;transform:translateY(10px);pointer-events:none;
+  transition:opacity .35s ease,transform .35s ease,border-color .2s,background .2s}
+#wa.on{opacity:1;transform:none;pointer-events:auto}
+#wa:hover{border-color:var(--acc);background:rgba(var(--nh),.08)}
+#wa svg{width:17px;height:17px;fill:var(--acc);flex:none}
+@media(max-width:520px){#wa span{display:none}#wa{padding:.72rem;right:14px;bottom:14px}}
+@media(prefers-reduced-motion:reduce){#wa{transition:opacity .01s}}
+/* live panel */
+.now{display:grid;grid-template-columns:1fr;gap:10px;margin-top:.4rem}
+.cell{border:1px solid var(--line);border-radius:5px;background:var(--tint);padding:.8rem .95rem}
+.cell dt{font-size:.78rem;color:var(--dim);margin-bottom:.28rem}
+.cell dd{margin:0;font-size:1rem;color:var(--ink);font-variant-numeric:tabular-nums}
+.cell dd.big{font-size:1.45rem;font-weight:600;color:var(--acc);line-height:1.1}
+.cell dd small{display:block;font-size:.8rem;color:var(--dim);margin-top:.2rem;font-weight:400}
+.beat{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--acc);
+  margin-right:.5rem;vertical-align:middle;animation:beat 2.4s ease-in-out infinite}
+@keyframes beat{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(var(--nh),.45)}
+  70%{opacity:.75;box-shadow:0 0 0 7px rgba(var(--nh),0)}}
+.now .off{color:var(--dim)}
+@media(min-width:620px){.now{grid-template-columns:repeat(3,1fr)}}
 /* contact */
 .ct h2{font-size:clamp(1.65rem,3.2vw,2.25rem);font-weight:400;margin-bottom:.8rem;max-width:20ch}
-.info{margin:1.4rem 0 0;display:grid;gap:.65rem}
-.info div{display:grid;gap:.05rem}
-.info dt{color:var(--dim);font-size:.85rem}
-.info dd{margin:0}
-.info a{text-decoration:none;border-bottom:1px solid var(--line2);transition:border-color .2s}
-.info a:hover{border-bottom-color:var(--acc)}
+@media(min-width:820px){
+  .ct .two>div{display:flex;flex-direction:column}
+  .ct .info{margin-top:auto}
+  .ct .two>div:last-child{padding-top:.35rem}
+}
+.info{margin:1.5rem 0 0;border:1px solid var(--line);border-radius:5px;overflow:hidden}
+.info div{display:grid;grid-template-columns:7.6rem 1fr;align-items:center;gap:1rem;
+  padding:.82rem 1rem;border-top:1px solid var(--line);transition:background .22s ease}
+.info div:first-child{border-top:0}
+.info div:hover{background:var(--tint)}
+.info dt{display:flex;align-items:center;gap:.55rem;color:var(--dim);font-size:.85rem}
+.info dt svg{width:15px;height:15px;fill:var(--acc);flex:none}
+.info dd{margin:0;font-size:.97rem;overflow-wrap:anywhere}
+.info a{text-decoration:none;color:var(--ink);border-bottom:1px solid transparent;
+  transition:color .2s,border-color .2s}
+.info a:hover{color:var(--acc);border-bottom-color:var(--acc)}
+@media(max-width:420px){.info div{grid-template-columns:1fr;gap:.25rem}}
 .fld{display:grid;gap:.3rem;margin-bottom:.8rem}
 .fld label{font-size:.85rem;color:var(--dim)}
 .fld input,.fld textarea{font:inherit;font-size:.95rem;color:var(--ink);background:var(--bg2);
-  border:1px solid var(--line);border-radius:3px;padding:.55rem .7rem;width:100%;transition:border-color .2s}
+  border:1px solid var(--line);border-radius:5px;padding:.62rem .72rem;width:100%;transition:border-color .2s}
 .fld textarea{min-height:112px;resize:vertical;line-height:1.5}
 .fld input:focus,.fld textarea:focus{outline:none;border-color:var(--acc)}
 .fld input::placeholder,.fld textarea::placeholder{color:var(--dim);opacity:.6}
@@ -251,6 +287,7 @@ nav,section,footer{position:relative;z-index:1}
   html{scroll-behavior:auto}.track{animation:none}#net{display:none}
   .shot::before{animation:none;opacity:.45}
   .fact[open] li{animation:none}
+  .beat{animation:none}
   .rv,.fd{opacity:1 !important;transform:none !important;transition:none !important}
 }
 .rv{opacity:0;transform:translateY(18px);transition:opacity .75s cubic-bezier(.2,.7,.3,1),transform .75s cubic-bezier(.2,.7,.3,1)}
@@ -285,7 +322,7 @@ nav,section,footer{position:relative;z-index:1}
         <a class="btn btn--solid" href="Dhruv_Barot_Resume.pdf" download>Download CV</a>
         <a class="btn" href="#contact">Get in touch</a>
         <a class="btn" href="https://www.linkedin.com/in/dhruv-barot-49bba0106/" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="btn" href="https://wa.me/971505795163?text=Hi%20Dhruv%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20talk%20about%20a%20role." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.02h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.21 8.21 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.15.16-.29.18-.54.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.44.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.47-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.29Z"/></svg>WhatsApp</a>
+        <a class="btn" href="https://wa.me/971588259429?text=Hi%20Dhruv%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20talk%20about%20a%20role." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.02h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.21 8.21 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.15.16-.29.18-.54.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.44.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.47-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.29Z"/></svg>WhatsApp</a>
       </div>
     </div>
     <figure class="shot">
@@ -393,6 +430,18 @@ nav,section,footer{position:relative;z-index:1}
   </div>
 </div></section>
 
+<section id="now"><div class="wrap">
+  <p class="lbl">Right now</p>
+  <dl class="now">
+    <div class="cell"><dt><span class="beat"></span>Dubai time</dt>
+      <dd class="big" id="nclock">--:--:--</dd><dd><small id="ndate">&nbsp;</small></dd></div>
+    <div class="cell"><dt>Availability</dt><dd id="nstat">&nbsp;</dd>
+      <dd><small id="nstat2">&nbsp;</small></dd></div>
+    <div class="cell"><dt>Your side of the wire</dt><dd id="nyou">&nbsp;</dd>
+      <dd><small id="nyou2">&nbsp;</small></dd></div>
+  </dl>
+</div></section>
+
 <section id="contact" class="ct"><div class="wrap">
   <p class="lbl">Contact</p>
   <div class="two">
@@ -400,11 +449,9 @@ nav,section,footer{position:relative;z-index:1}
       <h2>If something needs looking after, get in touch.</h2>
       <p class="dim">Open to system administration, IT infrastructure, cloud support and network roles in the UAE, on site or hybrid. Residence visa holder. I reply within a day.</p>
       <dl class="info">
-        <div><dt>Email</dt><dd><a href="mailto:barotdhruv080@gmail.com">barotdhruv080@gmail.com</a></dd></div>
-        <div><dt>Phone</dt><dd><a href="tel:+971505795163">+971 50 579 5163</a></dd></div>
-        <div><dt>WhatsApp</dt><dd><a href="https://wa.me/971505795163" target="_blank" rel="noopener">Message me directly</a></dd></div>
-        <div><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/dhruv-barot-49bba0106/" target="_blank" rel="noopener">dhruv-barot-49bba0106</a></dd></div>
-        <div><dt>CV</dt><dd><a href="Dhruv_Barot_Resume.pdf" download>Download PDF</a></dd></div>
+        <div><dt><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4.24-8 4.76-8-4.76V6l8 4.76L20 6v2.24Z"/></svg>Email</dt><dd><a href="mailto:barotdhruv080@gmail.com">barotdhruv080@gmail.com</a></dd></div>
+        <div><dt><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.2 2.2Z"/></svg>Phone</dt><dd><a href="tel:+971505795163">+971 50 579 5163</a></dd></div>
+        <div><dt><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm4.52 11.86c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.15.16-.29.18-.54.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.44.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.47-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.29Z"/></svg>WhatsApp</dt><dd><a href="https://wa.me/971588259429" target="_blank" rel="noopener">+971 58 825 9429</a></dd></div>
       </dl>
     </div>
     <div>
@@ -419,6 +466,8 @@ nav,section,footer{position:relative;z-index:1}
     </div>
   </div>
 </div></section>
+
+<a id="wa" href="https://wa.me/971588259429?text=Hi%20Dhruv%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20talk%20about%20a%20role." target="_blank" rel="noopener" aria-label="Message Dhruv on WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.02h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.21 8.21 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.15.16-.29.18-.54.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.44.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.47-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.29Z"/></svg><span>WhatsApp</span></a>
 
 <div class="wrap"><footer>
   <span>&copy; <span id="yr">2026</span> Dhruv Barot &mdash; Dubai, UAE</span>
@@ -502,6 +551,80 @@ var MY_MAIL='barotdhruv080@gmail.com';
       mailto(n,e,m);
     });
   });
+})();
+
+/* ---------------------------------------------------------------------------
+   Live panel. Everything here is read from the visitor's own browser and never
+   leaves it. The Cloudflare trace call is a best effort: if it is unavailable
+   the panel just shows less, it never shows an error.
+--------------------------------------------------------------------------- */
+(function(){
+  var clock=document.getElementById('nclock'); if(!clock) return;
+  var dateEl=document.getElementById('ndate'),stat=document.getElementById('nstat'),
+      stat2=document.getElementById('nstat2'),you=document.getElementById('nyou'),
+      you2=document.getElementById('nyou2');
+  var DXB='Asia/Dubai';
+
+  var fTime=new Intl.DateTimeFormat('en-GB',{timeZone:DXB,hour:'2-digit',minute:'2-digit',
+        second:'2-digit',hour12:false});
+  var fDate=new Intl.DateTimeFormat('en-GB',{timeZone:DXB,weekday:'long',day:'numeric',month:'long'});
+  var fParts=new Intl.DateTimeFormat('en-GB',{timeZone:DXB,weekday:'short',hour:'2-digit',hour12:false});
+
+  function tick(){
+    var d=new Date();
+    clock.textContent=fTime.format(d);
+    dateEl.textContent=fDate.format(d);
+
+    var p=fParts.formatToParts(d),wd='',hr=0;
+    p.forEach(function(x){if(x.type==='weekday')wd=x.value;if(x.type==='hour')hr=parseInt(x.value,10);});
+    var weekday=['Mon','Tue','Wed','Thu','Fri'].indexOf(wd)>-1;
+    if(weekday&&hr>=9&&hr<18){
+      stat.innerHTML='<span class="beat"></span>At the desk';
+      stat2.textContent='Working hours, Monday to Friday';
+    }else if(weekday&&hr>=18&&hr<23){
+      stat.textContent='Off the clock';
+      stat2.textContent='Still reachable \u2014 I reply within a day';
+      stat.className='off';
+    }else{
+      stat.textContent=weekday?'Asleep, probably':'Weekend';
+      stat2.textContent='Message me anyway \u2014 I reply within a day';
+      stat.className='off';
+    }
+  }
+  tick(); setInterval(tick,1000);
+
+  /* visitor side */
+  try{
+    var tz=Intl.DateTimeFormat().resolvedOptions().timeZone||'';
+    var mine=-new Date().getTimezoneOffset()/60;
+    var diff=Math.round((mine-4)*10)/10;
+    var gap=diff===0?'same hours as Dubai'
+      :(Math.abs(diff)+(Math.abs(diff)===1?' hour ':' hours ')+(diff>0?'ahead of':'behind')+' Dubai');
+
+    var ua=navigator.userAgent,os='your device',br='';
+    if(/Windows NT 10|Windows NT 11/.test(ua))os='Windows';
+    else if(/Mac OS X/.test(ua))os='macOS'; else if(/Android/.test(ua))os='Android';
+    else if(/iPhone|iPad/.test(ua))os='iOS'; else if(/Linux/.test(ua))os='Linux';
+    if(/Edg\//.test(ua))br='Edge'; else if(/OPR\//.test(ua))br='Opera';
+    else if(/Chrome\//.test(ua))br='Chrome'; else if(/Safari\//.test(ua))br='Safari';
+    else if(/Firefox\//.test(ua))br='Firefox';
+
+    you.textContent=tz?tz.replace(/_/g,' '):'Unknown timezone';
+    var bits=[gap];
+    if(br)bits.push(br+' on '+os); else bits.push(os);
+    var c=navigator.connection;
+    if(c&&c.effectiveType)bits.push(c.effectiveType.toUpperCase()+' connection');
+    you2.textContent=bits.join(' \u00b7 ');
+
+    /* If Cloudflare answers, add the data centre serving this visitor. */
+    fetch('/cdn-cgi/trace',{cache:'no-store'}).then(function(r){
+      return r.ok?r.text():Promise.reject();
+    }).then(function(t){
+      var o={};t.trim().split('\n').forEach(function(l){var i=l.indexOf('=');
+        if(i>0)o[l.slice(0,i)]=l.slice(i+1);});
+      if(o.colo)you2.textContent+=' \u00b7 served from '+o.colo;
+    }).catch(function(){});
+  }catch(e){}
 })();
 
 (function(){
@@ -641,7 +764,8 @@ var MY_MAIL='barotdhruv080@gmail.com';
   }catch(e){}
 
   try{
-    var bar=document.getElementById('bar'),nv=document.getElementById('nv'),tick=false;
+    var bar=document.getElementById('bar'),nv=document.getElementById('nv'),
+        wa=document.getElementById('wa'),tick=false;
     addEventListener('scroll',function(){
       if(tick)return;
       tick=true;
@@ -649,6 +773,7 @@ var MY_MAIL='barotdhruv080@gmail.com';
         var d=document.documentElement.scrollHeight-innerHeight;
         bar.style.width=(d>0?scrollY/d*100:0)+'%';
         nv.classList.toggle('on',scrollY>10);
+        if(wa)wa.classList.toggle('on',scrollY>innerHeight*0.6);
         tick=false;
       });
     },{passive:true});
