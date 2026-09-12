@@ -6,23 +6,23 @@
 <meta name="theme-color" content="#0A1518">
 <title>Dhruv Barot &mdash; System Administrator</title>
 <meta name="description" content="System administrator in Dubai. Windows and Linux, AWS cloud, networking, backup and disaster recovery.">
-<link rel="canonical" href="https://portfolio.barotdhruv080.workers.dev/">
+<link rel="canonical" href="https://portfolio.dhruvbarot.workers.dev/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230A1518'/%3E%3Ccircle cx='16' cy='16' r='11' fill='none' stroke='%232B4E53' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='5.5' fill='%23F0A54A'/%3E%3C/svg%3E">
 
 <!-- Link preview. If the site URL ever changes, update BOTH of these and og:image. -->
 <meta property="og:type" content="profile">
 <meta property="og:site_name" content="Dhruv Barot">
-<meta property="og:url" content="https://portfolio.barotdhruv080.workers.dev/">
+<meta property="og:url" content="https://portfolio.dhruvbarot.workers.dev/">
 <meta property="og:title" content="Dhruv Barot &mdash; System Administrator, Dubai">
 <meta property="og:description" content="Nine years across networking, server administration, hardware and cloud. Windows and Linux, AWS, backup and disaster recovery.">
-<meta property="og:image" content="https://portfolio.barotdhruv080.workers.dev/og-image.jpg">
+<meta property="og:image" content="https://portfolio.dhruvbarot.workers.dev/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Dhruv Barot, System Administrator in Dubai">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Dhruv Barot &mdash; System Administrator, Dubai">
 <meta name="twitter:description" content="Windows and Linux, AWS cloud, networking, backup and disaster recovery.">
-<meta name="twitter:image" content="https://portfolio.barotdhruv080.workers.dev/og-image.jpg">
+<meta name="twitter:image" content="https://portfolio.dhruvbarot.workers.dev/og-image.jpg">
 
 <script type="application/ld+json">
 {
@@ -30,8 +30,8 @@
   "@type":"Person",
   "name":"Dhruv Barot",
   "jobTitle":"System Administrator",
-  "url":"https://portfolio.barotdhruv080.workers.dev/",
-  "image":"https://portfolio.barotdhruv080.workers.dev/og-image.jpg",
+  "url":"https://portfolio.dhruvbarot.workers.dev/",
+  "image":"https://portfolio.dhruvbarot.workers.dev/og-image.jpg",
   "email":"mailto:barotdhruv080@gmail.com",
   "telephone":"+971505795163",
   "address":{"@type":"PostalAddress","addressLocality":"Dubai","addressCountry":"AE"},
@@ -103,7 +103,9 @@ p{margin:0 0 .95em}p:last-child{margin-bottom:0}
   background:radial-gradient(58% 62% at 72% 26%,rgba(var(--nh),.075),transparent 72%),
              radial-gradient(50% 55% at 12% 78%,rgba(var(--nl),.09),transparent 74%)}
 .hero{display:grid;gap:38px;align-items:center}
-h1{font-size:clamp(2.4rem,5.2vw,3.7rem);font-weight:400}
+h1{font-size:clamp(2.7rem,6.4vw,4.6rem);font-weight:400;letter-spacing:-.04em;line-height:1.02}
+.avail{display:inline-flex;align-items:center;gap:.5rem;margin:0 0 1.25rem;font-size:.84rem;
+  color:var(--dim);border:1px solid var(--line);border-radius:999px;padding:.32rem .82rem .32rem .7rem}
 .role{position:relative;padding-left:14px;margin:.6rem 0 1.1rem;font-style:italic;
   color:var(--dim);font-size:clamp(1.05rem,2vw,1.3rem)}
 .role::before{content:"";position:absolute;left:0;top:.15em;bottom:.15em;width:2px;background:var(--acc)}
@@ -135,17 +137,22 @@ h1{font-size:clamp(2.4rem,5.2vw,3.7rem);font-weight:400}
 .pip{width:6px;height:6px;border-radius:50%;background:var(--acc);flex:none}
 
 /* facts */
-.facts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:2.2rem}
-.fact{border:1px solid var(--line);border-radius:5px;background:var(--tint);overflow:hidden;
-  transition:border-color .3s ease,background .3s ease}
-.fact[open]{border-color:var(--acc);background:rgba(var(--nh),.045)}
-.fact summary{list-style:none;cursor:pointer;padding:.9rem 1rem;display:flex;align-items:baseline;gap:.7rem}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:2.8rem;
+  border-top:1px solid var(--line)}
+.fact{position:relative;border:0;border-bottom:1px solid var(--line);border-radius:0;background:none;
+  transition:background .3s ease}
+/* a line runs across the top as the card opens, like a gauge filling */
+.fact::after{content:"";position:absolute;left:0;top:-1px;height:2px;width:0;
+  background:var(--acc);transition:width .4s cubic-bezier(.2,.8,.2,1)}
+.fact[open]::after{width:100%}
+.fact[open]{background:rgba(var(--nh),.035)}
+.fact summary{list-style:none;cursor:pointer;padding:.95rem .9rem;display:flex;align-items:baseline;gap:.7rem}
 .fact summary::-webkit-details-marker{display:none}
 .fact b{font-size:1.55rem;font-weight:600;color:var(--acc);line-height:1;
   font-variant-numeric:tabular-nums;transition:text-shadow .3s ease}
 .fact[open] b{text-shadow:0 0 18px rgba(var(--nh),.45)}
 .fact span{flex:1;color:var(--dim);font-size:.95rem}
-.fact ul{margin:0;padding:0 1rem 1rem;list-style:none;display:grid;gap:.4rem}
+.fact ul{margin:0;padding:0 .9rem 1.1rem;list-style:none;display:grid;gap:.4rem}
 .fact li{font-size:.88rem;color:var(--dim);padding-left:.9rem;position:relative}
 .fact li::before{content:"";position:absolute;left:0;top:.62em;width:4px;height:4px;
   border-radius:50%;background:var(--acc)}
@@ -164,12 +171,14 @@ h1{font-size:clamp(2.4rem,5.2vw,3.7rem);font-weight:400}
 .strip{margin-top:2.2rem;padding:.75rem 0;overflow:hidden;border-block:1px solid var(--line);
   -webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);
   mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent)}
-.track{display:flex;width:max-content;animation:mq 38s linear infinite}
+.track{display:flex;width:max-content;animation:mq 58s linear infinite}
 .strip:hover .track{animation-play-state:paused}
 @keyframes mq{to{transform:translateX(-50%)}}
 .track span{display:flex;align-items:center;gap:2rem;white-space:nowrap;font-size:.88rem;
-  font-style:italic;color:var(--dim);padding-right:2rem}
-.track span::after{content:"\2022";color:var(--acc);font-style:normal}
+  color:var(--dim);padding-right:2rem;letter-spacing:.008em;transition:color .25s ease}
+.track span:hover{color:var(--ink)}
+.track span::after{content:"";width:4px;height:4px;border-radius:50%;background:var(--acc);
+  flex:none;opacity:.65}
 
 /* work */
 .work{border-top:1px solid var(--line)}
@@ -273,7 +282,8 @@ nav,section,footer{position:relative;z-index:1}
   .hero{grid-template-columns:1.25fr .75fr;gap:44px}
   .shot{margin-left:auto}
   .facts{grid-template-columns:repeat(4,1fr)}
-  .facts .fact{align-self:start}
+  .facts .fact{align-self:start;border-bottom:0;border-left:1px solid var(--line)}
+  .facts .fact:first-child{border-left:0}
   .two{grid-template-columns:1fr 1fr;gap:2.6rem}
   .led .row{grid-template-columns:13rem 1fr;gap:1.4rem}
   .rl{grid-template-columns:9rem 1fr;gap:1.2rem;align-items:baseline}
@@ -315,6 +325,7 @@ nav,section,footer{position:relative;z-index:1}
 <section id="hero"><div class="wrap">
   <div class="hero">
     <div>
+      <p class="avail"><span class="beat"></span><span id="havail">Dubai, UAE</span></p>
       <h1 class="ln"><i>Dhruv Barot</i></h1>
       <p class="role">System Administrator &mdash; Dubai, UAE</p>
       <p class="intro">Nine years across networking, server administration, hardware and cloud. I hold environments at 99.9% uptime, automate the work that should never have been manual, and write the documentation that lets the next person take over.</p>
@@ -563,7 +574,8 @@ var MY_MAIL='barotdhruv080@gmail.com';
   var dateEl=document.getElementById('ndate'),stat=document.getElementById('nstat'),
       stat2=document.getElementById('nstat2'),you=document.getElementById('nyou'),
       you2=document.getElementById('nyou2');
-  var DXB='Asia/Dubai';
+  var DXB='Asia/Dubai',hv=document.getElementById('havail');
+  function hero(t){if(hv&&hv.textContent!==t)hv.textContent=t;}
 
   var fTime=new Intl.DateTimeFormat('en-GB',{timeZone:DXB,hour:'2-digit',minute:'2-digit',
         second:'2-digit',hour12:false});
@@ -581,14 +593,17 @@ var MY_MAIL='barotdhruv080@gmail.com';
     if(weekday&&hr>=9&&hr<18){
       stat.innerHTML='<span class="beat"></span>At the desk';
       stat2.textContent='Working hours, Monday to Friday';
+      hero('At the desk in Dubai');
     }else if(weekday&&hr>=18&&hr<23){
       stat.textContent='Off the clock';
       stat2.textContent='Still reachable \u2014 I reply within a day';
       stat.className='off';
+      hero('Off the clock \u2014 still reachable');
     }else{
       stat.textContent=weekday?'Asleep, probably':'Weekend';
       stat2.textContent='Message me anyway \u2014 I reply within a day';
       stat.className='off';
+      hero(weekday?'Asleep in Dubai \u2014 message me anyway':'Weekend in Dubai \u2014 message me anyway');
     }
   }
   tick(); setInterval(tick,1000);
@@ -632,6 +647,38 @@ var MY_MAIL='barotdhruv080@gmail.com';
   function CV(v){return getComputedStyle(document.documentElement).getPropertyValue(v).trim();}
 
   try{
+    /* The accent drifts through a narrow warm band, copper to gold and back,
+       one full pass every five minutes. Small enough per step that nothing
+       visibly jumps; wide enough that the page feels different later on.
+       Anyone who asked for reduced motion keeps the fixed amber. */
+    if(!reduce){
+      var root=document.documentElement,step=0;
+      function hsl(h,sa,li){
+        h/=360;var r,g,b;
+        function q(p,q2,t){if(t<0)t+=1;if(t>1)t-=1;
+          if(t<1/6)return p+(q2-p)*6*t;
+          if(t<1/2)return q2;
+          if(t<2/3)return p+(q2-p)*(2/3-t)*6;
+          return p;}
+        var q1=li<.5?li*(1+sa):li+sa-li*sa,p1=2*li-q1;
+        r=q(p1,q1,h+1/3);g=q(p1,q1,h);b=q(p1,q1,h-1/3);
+        return [Math.round(r*255),Math.round(g*255),Math.round(b*255)].join(',');
+      }
+      function drift(){
+        var p=(Math.sin(step/100*Math.PI*2)+1)/2, h=22+p*26;
+        var a=hsl(h,.85,.61), a2=hsl(h,.70,.45);
+        root.style.setProperty('--acc','rgb('+a+')');
+        root.style.setProperty('--acc2','rgb('+a2+')');
+        root.style.setProperty('--nh',a);
+        root.style.setProperty('--tint2','rgba('+a+',.10)');
+        dispatchEvent(new CustomEvent('accent',{detail:a}));
+        step++;
+      }
+      drift(); setInterval(drift,3000);
+    }
+  }catch(e){}
+
+  try{
     /* Open the stat cards on hover, but only where a real pointer exists.
        Touch has no hover, and keyboard users get the same thing via focus,
        so clicking and tabbing keep working exactly as before. */
@@ -659,6 +706,7 @@ var MY_MAIL='barotdhruv080@gmail.com';
     /* The palette is fixed, so read the three colours once at start-up instead
        of calling getComputedStyle for every node and every link on every frame. */
     var LINE='rgb('+CV('--nl')+')', NEAR='rgb('+CV('--nh')+')', FAR='rgb('+CV('--nn')+')';
+    addEventListener('accent',function(e){NEAR='rgb('+e.detail+')';});
 
     var R=150,R2=R*R,M=190,M2=M*M,B=6,seg=[],cnt=[],near=[],ii;
     for(ii=0;ii<B;ii++){seg.push([]);cnt.push(0);}
